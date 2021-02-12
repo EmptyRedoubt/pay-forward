@@ -1,0 +1,27 @@
+<div class="main-toolbar">
+  <mat-toolbar>
+    <div class="menu-button-div">
+      <button mat-icon-button aria-label="menu icon button" [matMenuTriggerFor]="menu" >
+        <mat-icon>menu</mat-icon>
+      </button>
+      <mat-menu #menu="matMenu" xPosition="after">
+        <button mat-menu-item>
+          <span>Register</span>
+        </button>
+        <button mat-menu-item>
+          <span>Login</span>
+        </button>
+      </mat-menu>
+    </div>
+    <span>PayForward</span>
+    <span class="example-spacer"></span>
+    <div class="home-button-div">
+      <button mat-icon-button aria-label="home icon button">
+        <mat-icon>home</mat-icon>
+      </button>
+    </div>
+  </mat-toolbar>
+</div>
+<div class="content">
+  <router-outlet></router-outlet>
+</div>
