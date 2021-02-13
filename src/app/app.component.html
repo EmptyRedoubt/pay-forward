@@ -5,10 +5,10 @@
         <mat-icon>menu</mat-icon>
       </button>
       <mat-menu #menu="matMenu" xPosition="after">
-        <button mat-menu-item>
+        <button mat-menu-item routerLink="/register">
           <span>Register</span>
         </button>
-        <button mat-menu-item>
+        <button mat-menu-item routerLink="/login">
           <span>Login</span>
         </button>
       </mat-menu>
@@ -16,7 +16,7 @@
     <span>PayForward</span>
     <span class="example-spacer"></span>
     <div class="home-button-div">
-      <button mat-icon-button aria-label="home icon button">
+      <button mat-icon-button aria-label="home icon button" routerLink="/home">
         <mat-icon>home</mat-icon>
       </button>
     </div>
