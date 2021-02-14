@@ -10,7 +10,4 @@ export class AppComponent {
   @ViewChild(MatMenuTrigger) trigger: MatMenuTrigger;
   title = 'pay-forward';
 
-  openToolbarMenu() {
-    this.trigger.openMenu();
-  }
 }

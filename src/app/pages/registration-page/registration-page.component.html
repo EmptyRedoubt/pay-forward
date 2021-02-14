@@ -1,1 +1,94 @@
 <p>registration-page works!</p>
+<div>
+  <form [formGroup]="newUserFormGroup" class="form">
+    <mat-form-field>
+      <mat-label>First Name</mat-label>
+      <input matNativeControl
+      id="newUserFirstName"
+      mat-input
+      formControlName="firstName"
+      />
+    </mat-form-field>
+    <mat-form-field>
+      <mat-label>Last Name</mat-label>
+      <input matNativeControl
+        id="newUserLastName"
+        mat-input
+        formControlName="lastName"
+      />
+    </mat-form-field>
+    <br>
+    <mat-form-field>
+      <mat-label>Address Line 1</mat-label>
+      <input matNativeControl
+        id="newUseraddress1"
+        mat-input
+        formControlName="address1"
+      />
+    </mat-form-field>
+    <mat-form-field>
+      <mat-label>Address Line 2</mat-label>
+      <input matNativeControl
+        id="newUseraddress2"
+        mat-input
+        formControlName="address2"
+      />
+    </mat-form-field>
+    <br>
+    <mat-form-field>
+      <mat-label>City</mat-label>
+      <input matNativeControl
+        id="newUserCity"
+        mat-input
+        formControlName="city"
+      />
+    </mat-form-field>
+    <mat-form-field appearance="fill">
+      <mat-label>Select a State</mat-label>
+      <select matNativeControl formControlName="state">
+        <option value="" selected></option>
+        <option *ngFor="let state of stateList" [value]="state">{{state}}</option>
+      </select>
+    </mat-form-field>
+    <mat-form-field>
+      <mat-label>Zip Code</mat-label>
+      <input matNativeControl
+             id="newUserZip"
+             mat-input
+             formControlName="zipCode"
+      />
+    </mat-form-field>
+    <mat-form-field appearance="fill">
+      <mat-label>Email</mat-label>
+      <input matInput placeholder="pat@example.com" formControlName="email" required>
+      <mat-error *ngIf="f.email.errors.required">Email is required</mat-error>
+      <mat-error *ngIf="f.email.errors.email">Must be a valid email address</mat-error>
+    </mat-form-field>
+    <mat-form-field>
+      <mat-label>Username</mat-label>
+      <input matNativeControl
+             id="newUserUsername"
+             mat-input
+             formControlName="username"
+      />
+      <mat-error *ngIf="f.username.errors.required">Username is required</mat-error>
+    </mat-form-field>
+    <mat-form-field>
+      <mat-label>Password</mat-label>
+      <input matNativeControl
+             id="newUserPassword"
+             mat-input
+             formControlName="password"
+      />
+      <mat-error *ngIf="f.password.errors.required">A password is required</mat-error>
+    </mat-form-field>
+    <mat-form-field appearance="fill">
+      <mat-label>User Type</mat-label>
+      <select matNativeControl formControlName="userType">
+        <option value="" selected></option>
+        <option *ngFor="let type of userTypes" [value]="type">{{type}}</option>
+      </select>
+    </mat-form-field>
+    <button mat-stroked-button (click)="submitForm()">Submit</button>
+  </form>
+</div>
