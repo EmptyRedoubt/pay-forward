@@ -39,7 +39,7 @@ export class RegistrationPageComponent implements OnInit {
 
 
   submitForm() {
-    // do the submit form stuffs
+    // add form group items to User model and send through actions to effects to a service
     if (this.newUserFormGroup.invalid) {
       return;
     }
