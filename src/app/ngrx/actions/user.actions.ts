@@ -1,5 +1,5 @@
 
-import {RegisterUserCommandResponse} from '../../models/responses/register-user-command-response';
+import { RegisterUserResponse } from '../../models/responses/register-user-response';
 import {User} from '../../models/user';
 import {createAction, props} from '@ngrx/store';
 
@@ -18,7 +18,7 @@ export const registerUserFailureAction = createAction(
 export const registerUserSuccessAction = createAction(
   'user/register/success',
   props<{
-    registerUserCommandResponse: RegisterUserCommandResponse
+    registerUserResponse: RegisterUserResponse
   }>(),
 );
 

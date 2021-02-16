@@ -1,6 +1,6 @@
 import {User} from '../user';
 
-export class RegisterUserCommandResponse {
+export class RegisterUserResponse {
   constructor(user: User) {
     this.user = user;
   }

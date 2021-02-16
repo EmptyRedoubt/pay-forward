@@ -3,7 +3,7 @@ import {HttpClient} from '@angular/common/http';
 import {RegisterUserCommand} from '../models/commands/register-user-command';
 import {User} from '../models/user';
 import {Observable} from 'rxjs';
-import {RegisterUserCommandResponse} from '../models/responses/register-user-command-response';
+import {RegisterUserResponse} from '../models/responses/register-user-response';
 
 @Injectable({
   providedIn: 'root'
@@ -11,7 +11,7 @@ import {RegisterUserCommandResponse} from '../models/responses/register-user-com
 export class UserService {
   constructor(private http: HttpClient) {}
 
-  registerUser(user: User): Observable<RegisterUserCommandResponse> {
+  registerUser(user: User): Observable<RegisterUserResponse> {
     const registerUserCommand = {
       user
     } as RegisterUserCommand;

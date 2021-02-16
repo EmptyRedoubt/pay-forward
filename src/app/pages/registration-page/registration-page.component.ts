@@ -6,6 +6,7 @@ import {UserLogin} from '../../models/userLogin';
 import {User} from '../../models/user';
 import {Store} from '@ngrx/store';
 import {registerUserAction} from '../../ngrx/actions/user.actions';
+import {Email} from '../../models/email';
 
 @Component({
   selector: 'app-registration-page',
@@ -63,10 +64,15 @@ export class RegistrationPageComponent implements OnInit {
       zipCode: this.newUserFormGroup.get('zipCode').value
     } as Address;
 
+    const email = {
+      userId: null,
+      email: this.newUserFormGroup.get('email').value
+    } as Email;
+
     const contact = {
       userId: null,
       address,
-      email: this.newUserFormGroup.get('email').value
+      email
     } as Contact;
 
     const userLogin = {
