@@ -1,5 +1,11 @@
 import { Component, OnInit } from '@angular/core';
 import {FormBuilder, FormControl, FormGroup, Validators} from '@angular/forms';
+import {Contact} from '../../models/contact';
+import {Address} from '../../models/address';
+import {UserLogin} from '../../models/userLogin';
+import {User} from '../../models/user';
+import {Store} from '@ngrx/store';
+import {registerUserAction} from '../../ngrx/actions/user.actions';
 
 @Component({
   selector: 'app-registration-page',
@@ -16,7 +22,8 @@ export class RegistrationPageComponent implements OnInit {
     'Virginia', 'Washington', 'West Virginia', 'Wisconsin', 'Wyoming'];
   userTypes: string[] = ['Vendor', 'Customer', 'Donor'];
 
-  constructor(private formBuilder: FormBuilder) { }
+  constructor(private formBuilder: FormBuilder,
+              private store$: Store) { }
 
   ngOnInit(): void {
     this.newUserFormGroup = this.formBuilder.group({
@@ -39,9 +46,44 @@ export class RegistrationPageComponent implements OnInit {
 
 
   submitForm() {
-    // add form group items to User model and send through actions to effects to a service
     if (this.newUserFormGroup.invalid) {
       return;
     }
+    this.store$.dispatch(registerUserAction({ user: this.packageUser() }));
+  }
+
+  packageUser(): User {
+    const address = {
+      userId: null,
+      address1: this.newUserFormGroup.get('address1').value,
+      address2: this.newUserFormGroup.get('address2').value,
+      city: this.newUserFormGroup.get('city').value,
+      state: this.newUserFormGroup.get('state').value,
+      country: this.newUserFormGroup.get('country').value,
+      zipCode: this.newUserFormGroup.get('zipCode').value
+    } as Address;
+
+    const contact = {
+      userId: null,
+      address,
+      email: this.newUserFormGroup.get('email').value
+    } as Contact;
+
+    const userLogin = {
+      userId: null,
+      username: this.newUserFormGroup.get('username').value,
+      password: this.newUserFormGroup.get('password').value
+    } as UserLogin;
+
+    const user = {
+      userId: null,
+      firstName: this.newUserFormGroup.get('firstName').value,
+      lastName: this.newUserFormGroup.get('lastName').value,
+      contact,
+      userLogin,
+      userType: this.newUserFormGroup.get('userType').value
+    } as User;
+
+    return user;
   }
 }
