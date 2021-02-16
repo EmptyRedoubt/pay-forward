@@ -12,7 +12,7 @@ export class UserEffects {
     this.actions$.pipe(
       ofType(registerUserAction),
       switchMap((action) =>
-        this.userService.registerUser({ action }).pipe(
+        this.userService.registerUser(action.user).pipe(
           map((response) => registerUserAcceptedAction()),
           catchError(
             (err) =>

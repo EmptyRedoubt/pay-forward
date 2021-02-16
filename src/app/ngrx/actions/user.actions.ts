@@ -1,6 +1,7 @@
-import {createAction, props} from '@ngrx/store';
-import {User} from '../../models/user';
+
 import {RegisterUserCommandResponse} from '../../models/responses/register-user-command-response';
+import {User} from '../../models/user';
+import {createAction, props} from '@ngrx/store';
 
 export const registerUserAction = createAction(
   'user/register',
@@ -19,4 +20,9 @@ export const registerUserSuccessAction = createAction(
   props<{
     registerUserCommandResponse: RegisterUserCommandResponse
   }>(),
+);
+
+export const loginUserAction = createAction(
+  'user/login',
+  props<{ username: string, password: string }>(),
 );
