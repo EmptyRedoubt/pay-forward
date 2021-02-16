@@ -21,7 +21,7 @@ const reducer = createReducer(
     (state, { registerUserCommandResponse } ) => ({
       ...state,
       users: userAdapter.upsertOne(
-        { user: {registerUserCommandResponse.user}  },
+        registerUserCommandResponse.user,
         state.users
       )
     }))
