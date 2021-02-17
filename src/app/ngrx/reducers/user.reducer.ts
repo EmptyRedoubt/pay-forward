@@ -18,10 +18,10 @@ export const initialState: UserState = {
 const reducer = createReducer(
   initialState,
   on(UserActions.registerUserSuccessAction,
-    (state, { registerUserCommandResponse } ) => ({
+    (state, { registerUserResponse } ) => ({
       ...state,
       users: userAdapter.upsertOne(
-        registerUserCommandResponse.user,
+        registerUserResponse.user,
         state.users
       )
     }))

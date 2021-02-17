@@ -4,6 +4,7 @@ import { NgModule } from '@angular/core';
 import { AppComponent } from './app.component';
 import { UserRegisterFormComponent } from './components/user-register-form/user-register-form.component';
 import { RegistrationPageComponent } from './pages/registration-page/registration-page.component';
+import { HttpClientModule } from '@angular/common/http';
 import { MatButtonModule } from '@angular/material/button';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatIconModule } from '@angular/material/icon';
@@ -21,6 +22,8 @@ import { StoreRouterConnectingModule } from '@ngrx/router-store';
 import { ReactiveFormsModule } from '@angular/forms';
 import { MatSelectModule } from '@angular/material/select';
 import { MatInputModule } from '@angular/material/input';
+import {UserEffects} from './ngrx/effects/user.effects';
+import {userFeatureKey, userReducer} from './ngrx/reducers/user.reducer';
 
 @NgModule({
   declarations: [
@@ -32,6 +35,7 @@ import { MatInputModule } from '@angular/material/input';
   ],
   imports: [
     BrowserModule,
+    HttpClientModule,
     MatButtonModule,
     MatFormFieldModule,
     MatIconModule,
@@ -42,7 +46,13 @@ import { MatInputModule } from '@angular/material/input';
     MatMenuModule,
     StoreModule.forRoot({}, {}),
     StoreDevtoolsModule.instrument({maxAge: 25, logOnly: environment.production}),
-    EffectsModule.forRoot([]),
+    EffectsModule.forRoot([UserEffects]),
+    StoreModule.forRoot(
+      {
+        [userFeatureKey]: userReducer,
+      },
+      {},
+    ),
     StoreRouterConnectingModule.forRoot(),
     ReactiveFormsModule,
     MatSelectModule

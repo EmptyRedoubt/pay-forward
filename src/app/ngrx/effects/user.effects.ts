@@ -8,7 +8,7 @@ import {of} from 'rxjs';
 @Injectable()
 export class UserEffects {
 
-  registerUser$ = // createEffect(() =>
+  registerUser$ =  createEffect(() =>
     this.actions$.pipe(
       ofType(registerUserAction),
       switchMap((action) =>
@@ -24,7 +24,8 @@ export class UserEffects {
           ),
         ),
       ),
-    );
+    )
+  );
 
   constructor(
     private actions$: Actions,
